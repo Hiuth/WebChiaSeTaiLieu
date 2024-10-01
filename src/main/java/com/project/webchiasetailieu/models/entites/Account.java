@@ -18,6 +18,9 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int accountId;
 
+    @Column(name = "Email",unique = true, nullable = false)
+    private String email;
+
     @Column(name="Password",nullable=false)
     @Size(min=6,message = "Mật khẩu phải có ít nhất 6 kí tự")
     private String password;

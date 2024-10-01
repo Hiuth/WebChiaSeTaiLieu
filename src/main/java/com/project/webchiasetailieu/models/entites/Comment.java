@@ -27,6 +27,7 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name = "DocID", nullable = false)
     private Documents document;  // một tài liệu có nhiều bình luận
+
     @Column(name = "ComText", columnDefinition = "TEXT")
     private String comText;
 
