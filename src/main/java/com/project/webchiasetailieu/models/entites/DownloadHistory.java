@@ -2,6 +2,7 @@ package com.project.webchiasetailieu.models.entites;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "Download_History")
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class DownloadHistory {
 
     @Id

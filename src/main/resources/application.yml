@@ -12,5 +12,8 @@ spring:
     hibernate:
       ddl-auto: update
     properties:
-      hibernate: org.hibernate.dialect.MySQL8Dialect
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        naming:
+          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       format_sql: true

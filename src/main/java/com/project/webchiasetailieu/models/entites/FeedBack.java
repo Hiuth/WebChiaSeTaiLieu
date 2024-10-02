@@ -2,6 +2,7 @@ package com.project.webchiasetailieu.models.entites;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.w3c.dom.Text;
@@ -14,7 +15,7 @@ import java.util.Date;
 @Table(name="Feedback")
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Builder
 public class FeedBack
 {
     @Id

@@ -2,6 +2,7 @@ package com.project.webchiasetailieu.models.entites;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class DocCategory {
     @Id // dùng để xác định thằng đầu tiên là khoá chính
     @GeneratedValue(strategy = GenerationType.IDENTITY)// tăng tự động
