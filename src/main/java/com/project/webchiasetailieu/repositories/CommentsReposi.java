@@ -1,7 +1,7 @@
 package com.project.webchiasetailieu.repositories;
 
 import jakarta.transaction.Transactional;
-import org.hibernate.annotations.Comment;
+import com.project.webchiasetailieu.models.entites.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -15,6 +15,6 @@ public interface CommentsReposi extends JpaRepository<Comment, Integer> {
 
     @Modifying
     @Transactional
-    @Query("update Comment com set com.comText =: comText where com.comID =:comID" )
-    void updateComText(@Param("ComID") int comID, @Param("ComText") String comText);
+    @Query("update Comment com set com.comText = :comText where com.comID =:comID" )
+    void updateComTextById(@Param("comID") int comID, @Param("comText") String comText);
 }
