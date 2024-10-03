@@ -1,6 +1,7 @@
 package com.project.webchiasetailieu.models.entites;
 
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,22 +19,31 @@ import java.util.Date;
 public class PerInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="PerInfo_id ")
+    @Column(name="PerInfo_id")
     private int perInfoId;
 
-    @Column(name="Name",nullable=false,length=255 )
-    private String name;
+    @Column(name="FULL_NAME", nullable=false, length=255)
+    private String fullName;
 
-    @Column(name="Birthday",nullable=false )
+    @Column(name="Birthday", nullable=false)
     private Date birthday;
 
-    @Column(name="Sex", nullable=false )
+    @Column(name="Sex", nullable=false)
     private String sex;
 
-    @Column(name="Avatar",nullable=false )
+    @Column(name="Avatar", nullable=false)
     private String avatar;
 
+    @PrePersist
+    public void prePersist() {
+        if (this.avatar == null || this.avatar.isEmpty()) {
+            this.avatar = "default-avatar.jpg";
+        }
+    }
+
+
     @OneToOne
-    @JoinColumn(name="AccountID",nullable=false)
+    @JoinColumn(name="AccountID",  nullable=false)
     private Account account;
+
 }

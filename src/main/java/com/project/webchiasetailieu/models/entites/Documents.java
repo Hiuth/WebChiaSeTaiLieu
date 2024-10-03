@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 import java.time.LocalDateTime;
 
 
@@ -42,11 +43,11 @@ public class Documents {
 
     @ManyToOne// một tài khoản được phép đăng nhiều tài liệu
     @JoinColumn(name="AccountID", nullable = false)
-    private Account account;
+    private Account accountId;
 
     @ManyToOne//một danh mục có thể có nhiều tài liệu
     @JoinColumn (name="DocCategoryID", nullable = false) //1 danh mục thì được sử dụng bởi nhiều bài đăng tài liệu khác nhau
-    private DocCategory docCategory;
+    private DocCategory docCategoryId;
 
     @Column(name="CreateDay", nullable = false)
     private LocalDateTime createDay; //tạo tự động
