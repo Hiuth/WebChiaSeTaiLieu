@@ -11,5 +11,6 @@ public interface AccountReposi extends JpaRepository<Account, Integer> {
     @Query("select acc from Account  acc where acc.email=:Email" )
     Account findByEmail(@Param("Email") String Email);// tìm tài khoản theo email
 
+    //Account findByAccountId(int id);
     boolean existsByEmail(String email); //kiểm tra xem tài khoản có tồn tại không. Dành cho lúc tạo tài khoản
 }

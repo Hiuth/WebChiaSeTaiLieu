@@ -13,6 +13,8 @@ public interface CommentsReposi extends JpaRepository<Comment, Integer> {
     @Query("delete from Comment  c where c.comID = :commentId")
     void deleteCommentById(@Param("commentId") int commentId);
 
+//    Comment findCommentByCommentId(int id);
+
     @Modifying
     @Transactional
     @Query("update Comment com set com.comText = :comText where com.comID =:comID" )
