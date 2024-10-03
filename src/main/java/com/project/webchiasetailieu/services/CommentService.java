@@ -37,17 +37,21 @@ public class CommentService implements ICommentService {
     }
 
     @Override
-    public Comment updateComment(CommentDTO comment) {
-        return null;
+    public Comment updateComment(int commentId,CommentDTO commentDTO) {
+        Comment exisitingComment = getCommentById(commentId);
+        exisitingComment.setComText(commentDTO.getCommentText());
+        commentsReposi.save(exisitingComment);
+        return exisitingComment;
     }
 
     @Override
-    public void deleteComment(CommentDTO comment) {
-
+    public void deleteComment(int commentId) {
+        commentsReposi.deleteById(commentId);
     }
 
     @Override
     public Comment getCommentById(int id) {
-        return null;
+        return commentsReposi.findById(id)
+                .orElseThrow(() -> new RuntimeException("Comment not found"));
     }
 }

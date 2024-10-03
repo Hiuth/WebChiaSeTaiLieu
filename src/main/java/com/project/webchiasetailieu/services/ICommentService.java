@@ -6,9 +6,9 @@ import com.project.webchiasetailieu.models.entites.Comment;
 public interface ICommentService {
     Comment addComment(CommentDTO comment);
 
-    Comment updateComment(CommentDTO comment);
+    Comment updateComment(int commentId,CommentDTO comment);
 
-    void deleteComment(CommentDTO comment);
+    void deleteComment(int commentId);
 
     Comment getCommentById(int id);
 }
