@@ -7,13 +7,17 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-public interface CommentsReposi extends JpaRepository<Comment, Integer> {
+import java.util.List;
+
+public interface CommentReposi extends JpaRepository<Comment, Integer> {
     @Modifying
     @Transactional
     @Query("delete from Comment  c where c.comID = :commentId")
     void deleteCommentById(@Param("commentId") int commentId);
 
 //    Comment findCommentByCommentId(int id);
+    List<Comment> findCommentByAccount_AccountId(int accountId);
+
 
     @Modifying
     @Transactional

@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 
 @Entity //xác định thực thể trong jpa
-@Table(name = "DocCategory") // nếu khác ten so với trong database thì hẳn xài
+@Table(name = "DocCategory")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
