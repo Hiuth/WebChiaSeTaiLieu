@@ -10,13 +10,14 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface CommentReposi extends JpaRepository<Comment, Integer> {
-    @Modifying
+    @Modifying // dùng cho những hàm thay đổi dữ liệu
     @Transactional
     @Query("delete from Comment  c where c.comID = :commentId")
     void deleteCommentById(@Param("commentId") int commentId);
 
 //    Comment findCommentByCommentId(int id);
-    List<Comment> findCommentByAccount_AccountId(int accountId);
+    @Query("select com from Comment com where com.account.accountId = :accountId")
+    List<Comment> findCommentByAccount_AccountId(@Param("accountId") int accountId);
 
 
     @Modifying

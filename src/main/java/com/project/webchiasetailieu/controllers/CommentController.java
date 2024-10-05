@@ -33,15 +33,15 @@ public class CommentController {
         return ResponseEntity.ok("Added comment successfully");
     }
 
-    @PutMapping("{id}")
-    public ResponseEntity<String> updateComment(@PathVariable int id, @RequestBody CommentDTO commentDTO) {
-        commentService.updateComment(id, commentDTO);
+    @PutMapping("{commentId}")
+    public ResponseEntity<String> updateComment(@PathVariable int commentId, @RequestBody CommentDTO commentDTO) {
+        commentService.updateComment(commentId, commentDTO);
         return ResponseEntity.ok("Comment updated successfully");
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteComment(@PathVariable int id) {
-        commentService.deleteComment(id);
+    @DeleteMapping("/{commentId}")
+    public ResponseEntity<String> deleteComment(@PathVariable int commentId) {
+        commentService.deleteComment(commentId);
         return ResponseEntity.ok("Comment deleted successfully");
     }
 
