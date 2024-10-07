@@ -10,10 +10,14 @@ public interface IDocCategoryService {
 
     DocCategory updateDocCategory(int docCategoryId, DocCategoryDTO docCategory);
 
+    List<DocCategory> updateDocCategoryFolder(String docCategoryFolder,DocCategoryDTO docCategoryDTO);
+
     void deleteDocCategory(int id);
 
     List<DocCategory> getAllDocCategory();
 
     DocCategory getDocCategoryById(int id);
+
+   List<DocCategory> getDocCategoryByNameFolder(String docCategoryFolder);
 
 }

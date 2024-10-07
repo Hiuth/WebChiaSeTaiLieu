@@ -6,6 +6,7 @@ import lombok.*;
 @AllArgsConstructor //hàm khởi tạo constructor của class
 @NoArgsConstructor //khởi tạo mặc định không có tham số
 public class DocCategoryDTO {
-    private int docCategoryId; // sử dụng cho update và delete
+    private int docCategoryId;
+    private String docCategoryFolder;// sử dụng cho update và delete
     private String docCategoryName;
 }

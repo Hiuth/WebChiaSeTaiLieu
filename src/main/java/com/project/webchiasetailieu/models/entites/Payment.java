@@ -23,9 +23,6 @@ public class Payment {
     @Column(name = "Point", nullable = false)
     private int point;
 
-    @Column(name="PayMethod", nullable = false)
-    private String payMethod;
-
     @Column(name="Date", nullable = false)
     private Date date;
 

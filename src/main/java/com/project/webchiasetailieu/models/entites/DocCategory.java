@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 
 @Entity //xác định thực thể trong jpa
-@Table(name = "DocCategory") // nếu khác ten so với trong database thì hẳn xài
+@Table(name = "DocCategory")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,6 +18,9 @@ public class DocCategory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)// tăng tự động
     @Column(name="DocCategoryID")
     private int  docCategoryId;
+
+    @Column(name="DocCategoryFolder",nullable = false)
+    private String docCategoryFolder;
 
     @Column(name="DocCategoryName", nullable=false)
     private String docCategoryName;

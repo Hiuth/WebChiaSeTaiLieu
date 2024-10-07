@@ -29,6 +29,9 @@ public class Documents {
     @Column(name ="DocType", nullable = false,length = 50)
     private String docType;
 
+    @Column(name="DocSize",nullable = false)
+    private int docSize;
+
     @Column(name ="DocBinary", nullable = false)
     private byte[] docBinary;
 
@@ -51,6 +54,9 @@ public class Documents {
 
     @Column(name="CreateDay", nullable = false)
     private LocalDateTime createDay; //tạo tự động
+
+    @Column(name="DocAvatar")
+    private String docAvatar;
 
     @Column(name="DowTime", nullable = false)
     private int dowTime;
