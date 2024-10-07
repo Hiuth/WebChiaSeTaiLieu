@@ -19,6 +19,9 @@ public class DocCategory {
     @Column(name="DocCategoryID")
     private int  docCategoryId;
 
+    @Column(name="DocCategoryFolder",nullable = false)
+    private String docCategoryFolder;
+
     @Column(name="DocCategoryName", nullable=false)
     private String docCategoryName;
 }

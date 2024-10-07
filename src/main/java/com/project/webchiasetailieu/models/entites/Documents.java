@@ -54,6 +54,9 @@ public class Documents {
     @Column(name="CreateDay", nullable = false)
     private LocalDateTime createDay; //tạo tự động
 
+    @Column(name="DocAvatar")
+    private String docAvatar;
+
     @Column(name="DowTime", nullable = false)
     private int dowTime;
 
