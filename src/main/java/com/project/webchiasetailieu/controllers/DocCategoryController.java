@@ -24,6 +24,12 @@ public class DocCategoryController {
         return ResponseEntity.ok( docCategories);
     }
 
+    @GetMapping("/{docCategoryFolder}")
+    public ResponseEntity<List<DocCategory>> getDocCategoryFolder(@PathVariable String docCategoryFolder) {
+        List<DocCategory> docCategory = docCategoryService.getDocCategoryByNameFolder(docCategoryFolder);
+        return ResponseEntity.ok( docCategory);
+    }
+
     @PostMapping("")
     //Nếu tham số truyền vào là 1 object thì sao ? => Data Transfer Object (DTO)
     //  @RequestBody  được sử dụng để trích xuất dữ liệu JSON (hoặc XML, YAML) từ phần body của HTTP request và tự động chuyển đổi nó thành một đối tượng Java.
