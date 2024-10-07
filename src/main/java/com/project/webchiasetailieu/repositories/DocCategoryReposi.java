@@ -18,5 +18,7 @@ public interface DocCategoryReposi extends JpaRepository<DocCategory, Integer> {
     @Query("SELECT c FROM DocCategory c WHERE c.docCategoryName LIKE %:keyword%")
     List<DocCategory> findDocCategoryByKeyword(@Param("keyword") String keyword);
 
+    @Query("select  docCate from DocCategory docCate where docCate.docCategoryName =:DocCategoryName")
+    Optional<DocCategory> findIdByDocCategoryName(@Param("DocCategoryName") String DocCategoryName);
 
 }

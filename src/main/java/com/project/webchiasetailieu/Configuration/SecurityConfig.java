@@ -20,6 +20,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/accounts/**").permitAll()
                         .requestMatchers("/api/perinfo/**").permitAll()
+                        .requestMatchers("/api/v1/doccategory/**").permitAll()
                         .anyRequest().authenticated()
                 );
 

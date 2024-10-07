@@ -37,11 +37,18 @@ public class DocCategoryController {
         return ResponseEntity.ok( "Insert docCategory successfully");
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<String> updateDocCategory(@PathVariable int id, @RequestBody DocCategoryDTO docCategoryDTO) { // PathVariable là cái id ở trên mục PutMapping
+    @PutMapping("/{docCategoryName}")
+    public ResponseEntity<String> updateDocCategory(@PathVariable String docCategoryName, @RequestBody DocCategoryDTO docCategoryDTO) { // PathVariable là cái id ở trên mục PutMapping
         //Tìm bằng tên để lấy id rồi mới xuống dưới thay đổi.
-        docCategoryService.updateDocCategory(id,docCategoryDTO);
+        DocCategory docCategory = docCategoryService.getDocCategoryIdByName(docCategoryName);
+        docCategoryService.updateDocCategory(docCategory.getDocCategoryId(),docCategoryDTO);
         return  ResponseEntity.ok( "update docCategory successfully");
+    }
+
+    @PutMapping("/{docCategoryFolder}")
+    public ResponseEntity<String> updateDocCategoryFolder(@PathVariable String docCategoryFolder,@RequestBody DocCategoryDTO docCategoryDTO) {
+        docCategoryService.updateDocCategoryFolder(docCategoryFolder,docCategoryDTO);
+        return  ResponseEntity.ok( "update docCategoryFolder successfully");
     }
 
     @DeleteMapping("/{id}")

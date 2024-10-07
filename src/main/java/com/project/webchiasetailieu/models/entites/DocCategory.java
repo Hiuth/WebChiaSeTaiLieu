@@ -22,6 +22,6 @@ public class DocCategory {
     @Column(name="DocCategoryFolder",nullable = false)
     private String docCategoryFolder;
 
-    @Column(name="DocCategoryName", nullable=false)
+    @Column(name="DocCategoryName", nullable=false,unique = true)
     private String docCategoryName;
 }

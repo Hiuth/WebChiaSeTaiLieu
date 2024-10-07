@@ -61,6 +61,12 @@ public class DocCategoryService implements IDocCategoryService {
         return existingDocCategoryFolder;
     }
 
+    @Override
+    public DocCategory getDocCategoryIdByName(String docCategoryName) {
+        return docCategoryReposi.findIdByDocCategoryName(docCategoryName)
+                .orElseThrow(()-> new RuntimeException("docCategoryName not found"));
+    }
+
 
     @Override
     public void deleteDocCategory(int id) {
