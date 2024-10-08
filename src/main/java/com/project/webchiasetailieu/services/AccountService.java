@@ -114,4 +114,12 @@ public class AccountService implements IAccountService {
             throw new IllegalArgumentException("Account not found");
         }
     }
+
+    @Override
+    public Account updateWalletPoint(Integer id, Integer walletPoint) {
+        List<Account> existingAccount = findAccountById(id);
+        existingAccount.get(0).setWalletPoint(walletPoint);
+        accountReposi.save(existingAccount.get(0));
+        return existingAccount.get(0);
+    }
 }
