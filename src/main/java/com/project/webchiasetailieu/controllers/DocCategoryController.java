@@ -43,7 +43,7 @@ public class DocCategoryController {
         return ResponseEntity.ok( "Insert docCategory successfully");
     }
 
-    @PutMapping("/{docCategoryName}")
+    @PutMapping("/updateName/{docCategoryName}")
     public ResponseEntity<String> updateDocCategory(@PathVariable String docCategoryName, @RequestBody DocCategoryDTO docCategoryDTO) { // PathVariable là cái id ở trên mục PutMapping
         //Tìm bằng tên để lấy id rồi mới xuống dưới thay đổi.
         DocCategory docCategory = docCategoryService.getDocCategoryIdByName(docCategoryName);
@@ -51,16 +51,22 @@ public class DocCategoryController {
         return  ResponseEntity.ok( "update docCategory successfully");
     }
 
-    @PutMapping("/{docCategoryFolder}")
+    @PutMapping("/updateFolder/{docCategoryFolder}")
     public ResponseEntity<String> updateDocCategoryFolder(@PathVariable String docCategoryFolder,@RequestBody DocCategoryDTO docCategoryDTO) {
         docCategoryService.updateDocCategoryFolder(docCategoryFolder,docCategoryDTO);
-        return  ResponseEntity.ok( "update docCategoryFolder successfully");
+        return ResponseEntity.ok( "update docCategoryFolder successfully");
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteDocCategory(@PathVariable int id) {
-        docCategoryService.deleteDocCategory(id);
-        return  ResponseEntity.ok( "delete docCategory successfully");
+    @DeleteMapping("/deleteName/{docCategoryName}")
+    public ResponseEntity<String> deleteDocCategoryName(@PathVariable String docCategoryName) {
+        DocCategory docCategory = docCategoryService.getDocCategoryIdByName(docCategoryName);
+        docCategoryService.deleteDocCategory(docCategory.getDocCategoryId());
+        return ResponseEntity.ok( "delete docCategoryName successfully");
     }
 
+    @DeleteMapping("/deleteFolder/{docCategoryFolder}")
+    public ResponseEntity<String> deleteDocCategoryFolder(@PathVariable String docCategoryFolder) {
+        docCategoryService.deleteDocCategoryFolder(docCategoryFolder);
+        return ResponseEntity.ok( "delete docCategoryFolder successfully");
+    }
 }

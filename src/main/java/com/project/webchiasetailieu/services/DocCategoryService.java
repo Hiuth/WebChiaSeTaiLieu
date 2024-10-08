@@ -74,6 +74,11 @@ public class DocCategoryService implements IDocCategoryService {
     }
 
     @Override
+    public void deleteDocCategoryFolder(String docCategoryFolder) {
+        docCategoryReposi.deleteByDocCategoryFolder(docCategoryFolder);
+    }
+
+    @Override
     public List<DocCategory> getAllDocCategory() {
         return docCategoryReposi.findAll();
     }

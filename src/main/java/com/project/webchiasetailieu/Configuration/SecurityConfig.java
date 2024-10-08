@@ -21,6 +21,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/accounts/**").permitAll()
                         .requestMatchers("/api/perinfo/**").permitAll()
                         .requestMatchers("/api/v1/doccategory/**").permitAll()
+                        .requestMatchers("api/v1/comment/**").permitAll()
                         .anyRequest().authenticated()
                 );
 

@@ -16,6 +16,8 @@ public interface IDocCategoryService {
 
     void deleteDocCategory(int id);
 
+    void deleteDocCategoryFolder(String docCategoryFolder);
+
     List<DocCategory> getAllDocCategory();
 
     DocCategory getDocCategoryById(int id);

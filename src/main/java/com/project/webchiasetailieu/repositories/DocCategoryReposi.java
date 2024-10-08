@@ -1,7 +1,9 @@
 package com.project.webchiasetailieu.repositories;
 
 import com.project.webchiasetailieu.models.entites.DocCategory;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -20,5 +22,10 @@ public interface DocCategoryReposi extends JpaRepository<DocCategory, Integer> {
 
     @Query("select  docCate from DocCategory docCate where docCate.docCategoryName =:DocCategoryName")
     Optional<DocCategory> findIdByDocCategoryName(@Param("DocCategoryName") String DocCategoryName);
+
+    @Transactional
+    @Modifying
+    @Query("delete from DocCategory docCate where docCate.docCategoryFolder = :DocCategoryFolder ")
+    void deleteByDocCategoryFolder(@Param("DocCategoryFolder") String DocCategoryFolder);
 
 }
