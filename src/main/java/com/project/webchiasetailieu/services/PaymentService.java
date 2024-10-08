@@ -18,6 +18,7 @@ public class PaymentService implements IPaymentService {
 
     private final PaymentReposi paymentReposi;
     private final DocumentsReposi documentsReposi;
+    private final AccountService accountService;
     private AccountReposi accountReposi;
 
     @Override
@@ -35,7 +36,7 @@ public class PaymentService implements IPaymentService {
     public Payment createPayment(PaymentDTO paymentDTO) {
         //kiểm tra point có trong tài khoản
         //Nếu có đủ point thì tiếp tục mua, Không đủ thì báo không đủ
-        Account account = accountReposi.findById(paymentDTO.getAccountID())
+        Account account = accountReposi.findById(paymentDTO.getAccountID()) // người mua
                 .orElseThrow(() -> new RuntimeException("Account not found"));
 
         Documents documents = documentsReposi.findById(paymentDTO.getDocumentId())
@@ -43,8 +44,24 @@ public class PaymentService implements IPaymentService {
         if(account.getWalletPoint() < documents.getPoint()){
             throw new RuntimeException("You have not enough wallet point");
         }
+        Payment payment = Payment.builder()
+                .point(paymentDTO.getPoint())
+                .account(account)
+                .documents(documents)
+                .build();
+        Account account_seller = accountReposi.findById(documents.getAccountId().getAccountId())
+                .orElseThrow(()-> new RuntimeException("Account not found"));
+        // tăng điểm cho người bán
+        // lấy diem hien tai cua ng ban + cho diem cua tai lieu
+        accountService.updateWalletPoint(account_seller.getAccountId(),
+                account_seller.getWalletPoint()+documents.getPoint());
 
-        return null;
+        // giảm điểm của người mua
+        // lay diem cua ng mua - cho so diem cua tai lieu
+        accountService.updateWalletPoint(account.getAccountId(),
+                account.getWalletPoint()-documents.getPoint());
+
+        return paymentReposi.save(payment);
     }
 
     @Override

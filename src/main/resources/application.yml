@@ -3,9 +3,9 @@ server:
 
 spring:
   datasource:
-    url: "jdbc:mysql://localhost:3306/webchiasetailieu-copy"
+    url: "jdbc:mysql://localhost:3306/webchiasetailieu"
     username: root
-    password: root
+    password: vuhoangquan2004
 
   jpa:
     show-sql: true

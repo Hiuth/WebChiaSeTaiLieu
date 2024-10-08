@@ -15,5 +15,6 @@ public interface IAccountService {
     Account updatePassword(Integer id, String newPassword);
     Account banAccount(Integer id, AccountService.BanType banType);
     Account unbanAccount(Integer id);
+    Account updateWalletPoint(Integer id, Integer walletPoint);
 
 }
