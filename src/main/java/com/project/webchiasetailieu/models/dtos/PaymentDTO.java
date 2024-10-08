@@ -8,9 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PaymentDTO {
-    private int paymentID;
-    private int Point;
-    private int accountID;
+    private int paymentId;
+    private int accountId;//id của acc mua
     private int documentId;
 
 }

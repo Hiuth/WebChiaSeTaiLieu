@@ -12,6 +12,8 @@ public interface IPaymentService {
 
     Payment createPayment(PaymentDTO paymentDTO);
 
+    List<Payment> getAllPayments();
+
     Payment updatePayment(int paymentId, PaymentDTO payment);
 
     void deletePayment(int paymentId);

@@ -17,9 +17,6 @@ public interface AccountReposi extends JpaRepository<Account, Integer> {
     //Account findByAccountId(int id);
     boolean existsByEmail(String email); //kiểm tra xem tài khoản có tồn tại không. Dành cho lúc tạo tài khoản
 
-    Optional<Account> findById(Integer id); // Find account by ID
-
-
 
     List<Account> findAll(); // Find all accounts
 }
