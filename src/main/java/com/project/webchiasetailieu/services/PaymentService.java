@@ -19,7 +19,7 @@ public class PaymentService implements IPaymentService {
     private final PaymentReposi paymentReposi;
     private final DocumentsReposi documentsReposi;
     private final AccountService accountService;
-    private AccountReposi accountReposi;
+    private final AccountReposi accountReposi;
 
     @Override
     public Payment getPayment(int id) {
