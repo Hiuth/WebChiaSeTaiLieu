@@ -15,4 +15,6 @@ public interface INotificationsService {
     List<NotificationsDTO> getAllNotifications();
 
     List<NotificationsDTO> getNotificationsByAccountId(int accountId);
+
+    Notifications getNotificationsById(int notifiId);
 }

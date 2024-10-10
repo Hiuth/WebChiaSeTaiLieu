@@ -1,12 +1,12 @@
 package com.project.webchiasetailieu.services;
 
-import com.project.webchiasetailieu.models.dtos.PaymentDTO;
+import com.project.webchiasetailieu.models.dtos.DownloadDTO;
 import com.project.webchiasetailieu.models.entites.Account;
 import com.project.webchiasetailieu.models.entites.Documents;
-import com.project.webchiasetailieu.models.entites.Payment;
+import com.project.webchiasetailieu.models.entites.Download;
 import com.project.webchiasetailieu.repositories.AccountReposi;
 import com.project.webchiasetailieu.repositories.DocumentsReposi;
-import com.project.webchiasetailieu.repositories.PaymentReposi;
+import com.project.webchiasetailieu.repositories.DownloadReposi;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,37 +14,38 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class PaymentService implements IPaymentService {
+public class DownloadService implements IDownloadService {
 
-    private final PaymentReposi paymentReposi;
+    private final DownloadReposi downloadReposi;
     private final DocumentsReposi documentsReposi;
     private final AccountService accountService;
     private final AccountReposi accountReposi;
 
     @Override
-    public Payment getPayment(int id) {
-        return paymentReposi.findById(id)
-                .orElseThrow(() -> new RuntimeException("Payment not found"));
+    public Download getDownload(int id) {
+        return downloadReposi.findById(id)
+                .orElseThrow(() -> new RuntimeException("Download history not found"));
     }
 
     @Override
-    public List<Payment> getAllPaymentFromAccount(int accountId) {
-        return paymentReposi.findAllPaymentByAccount_AccountId(accountId);
+    public List<Download> getAllDownloadFromAccount(int accountId) {
+        return downloadReposi.findAllDownloadByAccount_AccountId(accountId);
     }
 
     @Override
-    public Payment createPayment(PaymentDTO paymentDTO) {
+    public Download createDownload(DownloadDTO downloadDTO) {
         //kiểm tra point có trong tài khoản
         //Nếu có đủ point thì tiếp tục mua, Không đủ thì báo không đủ
-        Account account = accountReposi.findById(paymentDTO.getAccountId())// người mua
+        // thêm phần kiểm tra xem coi tài liệu này đã được mua chưa/ chưa thì bắt mua nếu mua, rồi thì bỏ qua bước thanh toán
+        Account account = accountReposi.findById(downloadDTO.getAccountId())// người mua
                 .orElseThrow(() -> new RuntimeException("Account not found"));
 
-        Documents documents = documentsReposi.findById(paymentDTO.getDocumentId())
+        Documents documents = documentsReposi.findById(downloadDTO.getDocumentId())
                 .orElseThrow(() -> new RuntimeException("Document not found"));
         if(account.getWalletPoint() < documents.getPoint()){
             throw new RuntimeException("You have not enough wallet point");
         }
-        Payment payment = Payment.builder()
+        Download download = Download.builder()
                 .point(documents.getPoint())
                 .account(account)
                 .documents(documents)
@@ -61,21 +62,21 @@ public class PaymentService implements IPaymentService {
         accountService.updateWalletPoint(account.getAccountId(),
                 account.getWalletPoint()-documents.getPoint());
 
-        return paymentReposi.save(payment);
+        return downloadReposi.save(download);
     }
 
     @Override
-    public List<Payment> getAllPayments() {
-        return paymentReposi.findAll();
+    public List<Download> getAllDownload() {
+        return downloadReposi.findAll();
     }
 
     @Override
-    public Payment updatePayment(int paymentId, PaymentDTO payment) {
+    public Download updateDownload(int DownloadId, DownloadDTO downloadDTO) {
         return null;
     }
 
     @Override
-    public void deletePayment(int paymentId) {
+    public void deleteDownload(int downloadId) {
 
     }
 }

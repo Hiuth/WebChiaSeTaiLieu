@@ -14,7 +14,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Payment {
+public class Download {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PayID")

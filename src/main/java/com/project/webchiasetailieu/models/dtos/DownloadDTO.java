@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PaymentDTO {
+public class DownloadDTO {
     private int paymentId;
     private int accountId;//id của acc mua
     private int documentId;
