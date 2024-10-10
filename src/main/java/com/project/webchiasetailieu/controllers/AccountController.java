@@ -1,5 +1,6 @@
 package com.project.webchiasetailieu.controllers;
 
+import com.project.webchiasetailieu.components.JwtTokenUtils;
 import com.project.webchiasetailieu.models.dtos.AccountDTO;
 import com.project.webchiasetailieu.models.entites.Account;
 import com.project.webchiasetailieu.services.AccountService;
@@ -18,6 +19,15 @@ public class AccountController {
 
     @Autowired
     private IAccountService accountService;
+
+    @Autowired
+    private JwtTokenUtils jwtTokenUtils;
+
+    @GetMapping("/generate-secret-key")
+    public ResponseEntity<String> generateSecretKey(){
+        return ResponseEntity.ok(jwtTokenUtils.generateSecretKey());
+    }
+
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody AccountDTO accountDTO) {
