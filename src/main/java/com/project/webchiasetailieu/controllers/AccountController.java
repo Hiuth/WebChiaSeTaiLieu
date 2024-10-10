@@ -38,7 +38,6 @@ public class AccountController {
         return ResponseEntity.ok(otpService.generateOTP());
     }
 
-
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody AccountDTO accountDTO) {
         try {
