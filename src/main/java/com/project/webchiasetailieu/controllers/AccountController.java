@@ -5,7 +5,9 @@ import com.project.webchiasetailieu.models.dtos.AccountDTO;
 import com.project.webchiasetailieu.models.entites.Account;
 import com.project.webchiasetailieu.services.AccountService;
 import com.project.webchiasetailieu.services.IAccountService;
+import com.project.webchiasetailieu.services.OTPService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,9 +25,17 @@ public class AccountController {
     @Autowired
     private JwtTokenUtils jwtTokenUtils;
 
+    @Autowired
+    private OTPService otpService;
+
     @GetMapping("/generate-secret-key")
     public ResponseEntity<String> generateSecretKey(){
         return ResponseEntity.ok(jwtTokenUtils.generateSecretKey());
+    }
+
+    @GetMapping("/otp")
+    public ResponseEntity<String> otp(){
+        return ResponseEntity.ok(otpService.generateOTP());
     }
 
 
