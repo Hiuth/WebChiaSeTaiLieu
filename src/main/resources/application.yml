@@ -30,13 +30,7 @@ spring:
       max-file-size: 5MB
       max-request-size: 5MB
   mail:
-    host: smtp.example.com         # Thay thế bằng địa chỉ máy chủ SMTP của bạn
-    port: 587                       # Thay thế bằng cổng SMTP, thường là 587 cho TLS hoặc 465 cho SSL
-    username: your-email@example.com # Thay thế bằng tên đăng nhập email của bạn
-    password: your-email-password    # Thay thế bằng mật khẩu email của bạn
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
+    host: smtp.gmail.com         # địa chỉ máy chủ SMTP của bạn
+    port: 587                       # cổng SMTP, thường là 587 cho TLS hoặc 465 cho SSL
+    username: pdfHub5shareDoc@gmail.com
+    password: coderahs5buhfdp
