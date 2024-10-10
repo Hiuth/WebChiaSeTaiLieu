@@ -5,10 +5,12 @@ import com.project.webchiasetailieu.models.dtos.AccountDTO;
 import com.project.webchiasetailieu.models.entites.Account;
 import com.project.webchiasetailieu.services.AccountService;
 import com.project.webchiasetailieu.services.IAccountService;
+import com.project.webchiasetailieu.services.MailService;
 import com.project.webchiasetailieu.services.OTPService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.MailException;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -28,6 +30,9 @@ public class AccountController {
     @Autowired
     private OTPService otpService;
 
+    @Autowired
+    private MailService mailService;
+
     @GetMapping("/generate-secret-key")
     public ResponseEntity<String> generateSecretKey(){
         return ResponseEntity.ok(jwtTokenUtils.generateSecretKey());
@@ -36,6 +41,21 @@ public class AccountController {
     @GetMapping("/otp")
     public ResponseEntity<String> otp(){
         return ResponseEntity.ok(otpService.generateOTP());
+    }
+
+    @PostMapping("/send-email")
+    public ResponseEntity<String> sendEmail(@RequestBody String email){
+        try{
+            String to = email;
+            String subject = "Ma OTP";
+            String content = otpService.generateOTP();
+            mailService.sendMail(to, subject, content);
+            return ResponseEntity.ok("OTP sent");
+        }
+        catch (MailException e) {
+            // Nếu có lỗi khi gửi email
+            return ResponseEntity.status(500).body("Account registered successfully but failed to send OTP email.");
+        }
     }
 
     @PostMapping("/register")
