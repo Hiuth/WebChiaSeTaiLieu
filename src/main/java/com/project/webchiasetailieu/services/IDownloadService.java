@@ -14,6 +14,12 @@ public interface IDownloadService {
 
     List<Download> getAllDownload();
 
+    void createNotification1(int accountId);
+
+    void createNotification2(int accountId,String DocName, int point);
+
+    boolean checkDownloadBefore(int accountId, int documentId);
+
     Download updateDownload(int downloadId, DownloadDTO downloadDTO);
 
     void deleteDownload(int downloadId);
