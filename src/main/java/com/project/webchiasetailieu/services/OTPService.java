@@ -1,7 +1,9 @@
 package com.project.webchiasetailieu.services;
 
 import com.project.webchiasetailieu.Configuration.OTPConfig;
+import org.springframework.stereotype.Service;
 
+@Service
 public class OTPService {
     private int otpExpirationTime;
 
@@ -10,7 +12,7 @@ public class OTPService {
     }
 
     public String generateOTP(){
-        return String.valueOf((int)(Math.random()* 9000 ) + 1000);
+        return String.valueOf((int)(Math.random()* 1000000 ));
     }
 
     public void saveOtp(String email, String otp) {
