@@ -33,23 +33,26 @@ public class NotificationsService implements INotificationsService {
 
     @Override
     public Notifications updateNotification(int notiId, NotificationsDTO notification) {
-        Notifications existingNotification = getNotificationsById(notiId);
         return null;
     }
 
     @Override
-    public Notifications deleteNotification(int notiId) {
-        return null;
+     public void deleteNotification(int notiId) {
+        notificationsReposi.deleteById(notiId);
     }
 
     @Override
-    public List<NotificationsDTO> getAllNotifications() {
+    public List<Notifications> getAllNotifications() {
         return List.of();
     }
 
     @Override
-    public List<NotificationsDTO> getNotificationsByAccountId(int accountId) {
-        return List.of();
+    public List<Notifications> getNotificationsByAccountId(int accountId) {
+        List<Notifications> notifications = notificationsReposi.findAllByAccount_AccountId(accountId);
+        if (notifications.isEmpty()) {
+            throw new RuntimeException("No notifications found for account id " + accountId);
+        }
+        return notifications;
     }
 
     @Override

@@ -10,11 +10,11 @@ public interface INotificationsService {
 
     Notifications updateNotification(int notiId,NotificationsDTO notification);
 
-    Notifications deleteNotification(int notiId);
+    void deleteNotification(int notiId);
 
-    List<NotificationsDTO> getAllNotifications();
+    List<Notifications> getAllNotifications();
 
-    List<NotificationsDTO> getNotificationsByAccountId(int accountId);
+    List<Notifications> getNotificationsByAccountId(int accountId);
 
     Notifications getNotificationsById(int notifiId);
 }
