@@ -17,8 +17,8 @@ import java.util.Date;
 public class Download {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "PayID")
-    private int payID;
+    @Column(name = "DowID")
+    private int dowID;
 
     @Column(name = "Point", nullable = false)
     private int point;
