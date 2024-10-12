@@ -33,30 +33,28 @@ public class AccountController {
     @Autowired
     private MailService mailService;
 
-    @GetMapping("/generate-secret-key")
-    public ResponseEntity<String> generateSecretKey(){
-        return ResponseEntity.ok(jwtTokenUtils.generateSecretKey());
-    }
-
     @GetMapping("/otp")
     public ResponseEntity<String> otp(){
         return ResponseEntity.ok(otpService.generateOTP());
     }
 
+    @GetMapping("/generate-secret-key")
+    public ResponseEntity<String> generateSecretKey(){
+        return ResponseEntity.ok(jwtTokenUtils.generateSecretKey());
+
+    }
+
     @PostMapping("/send-email")
-    public ResponseEntity<String> sendEmail(@RequestBody String email){
-        try{
-            String to = email;
-            String subject = "Ma OTP";
-            String content = otpService.generateOTP();
-            mailService.sendMail(to, subject, content);
+    public ResponseEntity<String> sendEmail(@RequestBody AccountDTO accountDTO) {
+        try {
+            mailService.sendMail(accountDTO.getEmail(), "Ma OTP", otpService.generateOTP());
             return ResponseEntity.ok("OTP sent");
-        }
-        catch (MailException e) {
+        } catch (MailException e) {
             // Nếu có lỗi khi gửi email
             return ResponseEntity.status(500).body("Account registered successfully but failed to send OTP email.");
         }
     }
+
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody AccountDTO accountDTO) {

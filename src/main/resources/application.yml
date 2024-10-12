@@ -32,5 +32,8 @@ spring:
   mail:
     host: smtp.gmail.com         # địa chỉ máy chủ SMTP của bạn
     port: 587                       # cổng SMTP, thường là 587 cho TLS hoặc 465 cho SSL
-    username: pdfHub5shareDoc@gmail.com
-    password: coderahs5buhfdp
+    username: pdfhubsharedoc@gmail.com
+    password: oiul bfxo kugn rmcf
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
