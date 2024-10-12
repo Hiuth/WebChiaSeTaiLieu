@@ -12,5 +12,5 @@ public class FeedBackDTO {
     private int feedBackId;
     private String feedBackText;
     private String feedBackType;
-    private int accountId;
+    private int accountId; //acount up bai
 }

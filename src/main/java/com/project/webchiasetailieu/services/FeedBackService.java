@@ -1,6 +1,7 @@
 package com.project.webchiasetailieu.services;
 
 import com.project.webchiasetailieu.models.dtos.FeedBackDTO;
+import com.project.webchiasetailieu.models.entites.Account;
 import com.project.webchiasetailieu.models.entites.DocCategory;
 import com.project.webchiasetailieu.models.entites.FeedBack;
 import com.project.webchiasetailieu.repositories.AccountReposi;
@@ -39,7 +40,14 @@ public class FeedBackService implements IFeedBackService {
 
     @Override
     public FeedBack createFeedBack(FeedBackDTO feedBackDTO) {
-        return null;
+        Account account = accountReposi.findById(feedBackDTO.getAccountId())
+                .orElseThrow(()-> new RuntimeException("Account not found"));
+        FeedBack feedBack = FeedBack.builder()
+                .feedText(feedBackDTO.getFeedBackText())
+                .feedType(feedBackDTO.getFeedBackType())
+                .account(account)
+                .build();
+        return feedBackReposi.save(feedBack);
     }
 
     @Override

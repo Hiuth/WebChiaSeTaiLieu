@@ -24,6 +24,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/comment/**").permitAll()
                         .requestMatchers("/api/v1/download/**").permitAll()
                         .requestMatchers("/api/v1/notification/**").permitAll()
+                        .requestMatchers("/api/v1/FeedBack/**").permitAll()
                         .anyRequest().authenticated()
                 );
 
