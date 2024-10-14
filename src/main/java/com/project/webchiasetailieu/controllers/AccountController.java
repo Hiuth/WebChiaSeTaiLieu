@@ -44,7 +44,7 @@ public class AccountController {
 
     }
 
-    @PostMapping("/send-email")
+    /*@PostMapping("/send-email")
     public ResponseEntity<String> sendEmail(@RequestBody AccountDTO accountDTO) {
         try {
             mailService.sendMail(accountDTO.getEmail(), "Ma OTP", otpService.generateOTP());
@@ -53,6 +53,12 @@ public class AccountController {
             // Nếu có lỗi khi gửi email
             return ResponseEntity.status(500).body("Account registered successfully but failed to send OTP email.");
         }
+    }*/
+
+    @PostMapping("/send-otp")
+    public ResponseEntity<String> sendOTP(@RequestBody AccountDTO accountDTO) {
+        mailService.sendOTPMail(accountDTO.getEmail());
+        return ResponseEntity.ok("OTP sent");
     }
 
 

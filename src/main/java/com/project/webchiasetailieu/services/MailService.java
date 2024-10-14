@@ -5,13 +5,17 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.TemplateEngine;
 
 @Service
 public class MailService {
     @Autowired
     private JavaMailSender mailSender;
 
-    public void sendMail(String to, String subject, String content) {
+    @Autowired
+    private OTPService otpService;
+
+    /*public void sendMail(String to, String subject, String content) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(to);
         message.setSubject(subject);
@@ -26,6 +30,16 @@ public class MailService {
             e.printStackTrace();
             System.out.println("Failed to send email: " + e.getMessage());
         }  // Thêm dòng này để thực sự gửi email
+    }*/
+
+    public void sendOTPMail(String email){
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(email);
+        message.setFrom("pdfHub5shareDoc@gmail.com");
+        message.setSubject("Ma OTP");
+        message.setText("Ma dang ky tai khoan pdfHub: " + otpService.generateOTP());
+
+        mailSender.send(message);
     }
 }
 
