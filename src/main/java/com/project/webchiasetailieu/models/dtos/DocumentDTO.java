@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
+
 import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
@@ -14,7 +15,7 @@ public class DocumentDTO {
     private String documentName;
     private String documentType;
     private int documentSize;
-    private byte[] documentFile;
+    private byte docBinary;
     private String description;
     private int docCategoryId;
     private boolean isPaid;

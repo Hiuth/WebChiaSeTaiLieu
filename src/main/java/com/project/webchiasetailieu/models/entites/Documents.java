@@ -32,7 +32,7 @@ public class Documents {
     @Column(name="DocSize",nullable = false)
     private int docSize;
 
-    @Column(name ="DocBinary", nullable = false)
+    @Column(name ="DocBinary", nullable = false, columnDefinition = "LONGBLOB")
     private byte[] docBinary;
 
     @Column(name ="Description", nullable = false, columnDefinition = "TEXT")
@@ -67,4 +67,5 @@ public class Documents {
     }
 
 }
+
 

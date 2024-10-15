@@ -1,6 +1,7 @@
 package com.project.webchiasetailieu.services;
 
 import com.project.webchiasetailieu.models.entites.Documents;
+import com.project.webchiasetailieu.models.dtos.DocumentDTO;
 import com.project.webchiasetailieu.models.entites.DocCategory;
 import com.project.webchiasetailieu.models.entites.Account;
 import com.project.webchiasetailieu.repositories.DocumentsReposi;
@@ -28,8 +29,10 @@ public class DocumentsService implements IDocumentsService {
 
     @Override
     public Documents uploadDocument(MultipartFile file, String docName, String docType, String description, int docCategoryId, boolean isPaid, int point, int accountId) throws IOException {
-        DocCategory docCategory = docCategoryReposi.findById(docCategoryId).orElseThrow(() -> new IllegalArgumentException("Invalid category ID"));
-        Account account = accountReposi.findById(accountId).orElseThrow(() -> new IllegalArgumentException("Invalid account ID"));
+        DocCategory docCategory = docCategoryReposi.findById(docCategoryId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid category ID"));
+        Account account = accountReposi.findById(accountId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid account ID"));
 
         Documents document = Documents.builder()
                 .docName(docName)
@@ -54,5 +57,38 @@ public class DocumentsService implements IDocumentsService {
     @Override
     public Documents getDocumentById(int id) {
         return documentRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public Documents updateDocument(int id, DocumentDTO documentDTO) {
+        Documents document = getDocumentById(id);
+        if (document == null) {
+            throw new IllegalArgumentException("Document not found");
+        }
+
+        DocCategory docCategory = docCategoryReposi.findById(documentDTO.getDocCategoryId())
+                .orElseThrow(() -> new IllegalArgumentException("Invalid category ID"));
+        Account account = accountReposi.findById(documentDTO.getAccountId())
+                .orElseThrow(() -> new IllegalArgumentException("Invalid account ID"));
+
+        document.setDocName(documentDTO.getDocumentName());
+        document.setDocType(documentDTO.getDocumentType());
+        document.setDescription(documentDTO.getDescription());
+        document.setDocCategoryId(docCategory);
+        document.setPaid(documentDTO.isPaid());
+        document.setPoint(documentDTO.getPoint());
+        document.setAccountId(account);
+        document.setDocAvatar(documentDTO.getDocAvatar());
+
+        return documentRepository.save(document);
+    }
+    @Override
+    public Documents deleteDocument(int id) {
+        Documents document = getDocumentById(id);
+        if (document == null) {
+            throw new IllegalArgumentException("Document not found");
+        }
+        documentRepository.delete(document);
+        return document;
     }
 }
