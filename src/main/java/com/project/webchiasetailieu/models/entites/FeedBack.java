@@ -34,6 +34,12 @@ public class FeedBack
     @Column(name="FeedType", nullable=false)
     private String feedType;
 
+    @Column(name="FeedStatus", nullable=false)
+    private String feedStatus;
+
+    @Column(name="AdminFeedback")
+    private String adminFeedback;
+
     @ManyToOne // Một tài khoản có thể gửi nhiều phản hồi (feedback)
     @JoinColumn(name = "AccountID", nullable = false)
     private Account account;

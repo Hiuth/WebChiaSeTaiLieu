@@ -39,6 +39,13 @@ public class FeedBackController {
         return ResponseEntity.ok("Create feedback successfully");
     }
 
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> updateFeedBack(@RequestBody FeedBackDTO feedBackDTO, @PathVariable int id) {
+
+        feedBackService.updateFeedBack(id, feedBackDTO);
+        return ResponseEntity.ok("Update feedback successfully");
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteFeedBack(@PathVariable int id) {
         FeedBack feedBack = feedBackService.getFeedBackById(id);

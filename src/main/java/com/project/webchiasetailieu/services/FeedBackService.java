@@ -45,6 +45,7 @@ public class FeedBackService implements IFeedBackService {
         FeedBack feedBack = FeedBack.builder()
                 .feedText(feedBackDTO.getFeedBackText())
                 .feedType(feedBackDTO.getFeedBackType())
+                .feedStatus("Chưa xử lý")
                 .account(account)
                 .build();
         return feedBackReposi.save(feedBack);
@@ -56,7 +57,11 @@ public class FeedBackService implements IFeedBackService {
     }
 
     @Override
-    public FeedBack updateFeedBack(FeedBackDTO feedBackDTO) {
-        return null;
+    public FeedBack updateFeedBack(int feedID, FeedBackDTO feedBackDTO) {
+       FeedBack  existingFeedBack = getFeedBackById(feedID);
+       existingFeedBack.setFeedStatus(feedBackDTO.getFeedBackStatus());
+       existingFeedBack.setAdminFeedback(feedBackDTO.getAdminFeedBack());
+       feedBackReposi.save(existingFeedBack);
+        return existingFeedBack;
     }
 }

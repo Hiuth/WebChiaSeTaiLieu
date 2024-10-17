@@ -16,5 +16,5 @@ public interface IFeedBackService {
 
     void DeleteFeedBackById(int id);
 
-    FeedBack updateFeedBack(FeedBackDTO feedBackDTO);
+    FeedBack updateFeedBack(int feedId, FeedBackDTO feedBackDTO);
 }
