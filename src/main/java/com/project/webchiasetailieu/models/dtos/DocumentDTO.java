@@ -16,6 +16,7 @@ public class DocumentDTO {
     private String documentType;
     private int documentSize;
     private byte docBinary;
+    private String docUrl;
     private String description;
     private int docCategoryId;
     private boolean isPaid;
