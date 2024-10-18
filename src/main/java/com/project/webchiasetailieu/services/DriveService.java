@@ -25,7 +25,7 @@ public class DriveService {
 
     private static String getPathToGoogleCredentials() {
         String currentDirectory = System.getProperty("user.dir");
-        Path filePath = Paths.get(currentDirectory, "pdfhub1.json");
+        Path filePath = Paths.get(currentDirectory, "pdfhub2.json");
         return filePath.toString();
     }
 
