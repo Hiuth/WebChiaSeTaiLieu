@@ -1,6 +1,8 @@
 package com.project.webchiasetailieu.controllers;
 
 
+import com.project.webchiasetailieu.models.dtos.DriveDTO;
+import com.project.webchiasetailieu.services.DriveService;
 import com.project.webchiasetailieu.models.dtos.DocumentDTO;
 import com.project.webchiasetailieu.models.entites.Documents;
 import com.project.webchiasetailieu.services.DocumentsService;
@@ -24,7 +26,20 @@ public class DocumentsController {
     @Autowired
     private DocumentsService documentService;
 
+    @Autowired
+    private DriveService ser;
 
+    @PostMapping("/drive/upload")
+    public Object handleFileUpload(@RequestParam("file") MultipartFile file) throws IOException, GeneralSecurityException {
+        if (file.isEmpty()) {
+            return "File is empty";
+        }
+        File tempFile = File.createTempFile("temp", null);
+        file.transferTo(tempFile);
+        DriveDTO res = ser.uploadImageToDrive(tempFile);
+        System.out.println(res);
+        return res;
+    }
 
     @PostMapping("/upload")
     public ResponseEntity<?> uploadDocument(
