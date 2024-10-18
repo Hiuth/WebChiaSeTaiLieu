@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "pdfhub-438314",
+  "private_key_id": "03c48748d558562303b8de42d91ece1520d40e1a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCNDfeQ8Y7JkG/X\n4TysCDWJpiZ3p1rC+YMpk6XPrJBT336Ob2kkyUOWR3IsXIEaa4Dj0r6MGL3NLK1S\nnTpsbXnf7RpQCb+hWRwYAC0rHX86WqIJ9/BVgrThgOu/Tv4a6vr0A8+o/gSGrAUH\nQ9MfewxgOfmm2cxOjqZqx5FqfHM6LosADrzlM+NMQTbPP44iSaV0ldZ84E2cn9Oy\nLs69ekm528rgqUE+bBtb/q1UVyoTtpnBKxAqLx0CG6R+aws5UXhZmTQ3vlxho/lg\njumhpSAu+Ehb3gvsw5PKY2ZUjqeLnwc40ErmKKVz2fMD6o7mH91Fi3PbM+T+xN/G\ntWWHaSzhAgMBAAECggEAIlmZJR1KRDhOIFCr1YofPZDuc7uX3PzlzeF0ou0XbbFy\n0K19ebWgpa9q9LYnQ3+UEQcQm63nxNghMknzQRXs9NT5EC47kkeQ0aBzX3lMszGA\nnfRY/P36XiMm5f0O4Q/BwtxNvQ31HLW1+MWx24v74NAlhZYrDKNtD/pfJYM+jVeN\nIbjFhqdFkKenqexFv6mS1PjC0jONRu7LnuIsQmhwf7tRtHECIFJrHcYKqrroLg+I\n7XXpKSFsXIYTUS+QhQaSCLOfzNRPA0R4MgpAqIwKPnTYkgF8WXYLgIslGCjvs4Tj\nXklbq+xZHL5RIkZI9Ps/tP0pK2OLHMGvgvRgL1o01QKBgQDGp4FTP9K09U78vMld\nL2qy64F2psDdr8VxX9evRnKFqns9tFTsJ5XDnGnTLvGqqIGzFflc25ezifJtKlY1\n/AW0ZAFJyQ+eLJ6FyeS+RpYqahSoldAg0Cf+A1fba9Su79Ax9W25w5rRKozSDvxl\nOx48sm5fzwaXjgEfG0MhU7ynxQKBgQC1xdtea0GyxRuZCrH2e5DLfhYhTb/w+mTb\nBb0qUq8IOYzXAr/ZiocQd0oAM5Mwq0/+Tuql0gZVzP3NLFfi6IuZ4ZKQ9sqPO1JJ\nD7fUG3/W3xXrD7kJAf+eB2N7TAQHE+aO/NX/e+wqfmVfJtllErtkPC1QB5gSMdRe\nwM5OxtymbQKBgQCziipQ8ireT6L+uyUGqlc1s7GDafx/n1/EMsn9aJ8SfVz7DKN/\n99rcOt5N9myGP9tQ3vhLW1AE/RT0YsId8lO5kHS1mhkabNsssaah7avEU7GuGBBN\nx7ONWLor3o4POUCiFl3/+XBPwLQbGV41o7OVSfKFdtdPXBFZastGMKcdvQKBgB1b\nxI+ecTEHhuqUAKRX1s4XIknkveCVAJ8jcScZza1dZjL//a6MIj51ld0sd1SABt6D\nLoDzyBQplMCDrfo3Jv0Got6JDbROl363bDB09JPm2ipqEq+yw+9pMBck8u2VuEJV\n8dZe1IkUexkANFKP0PZihcsMPvKJW8ymBWxR0CeNAoGALKhincNOrngWm1HTYc3J\n3bqDC5nvX3A2CrMMnINITac9zVbSPYvkelPPSdwcPW9dyMkC8QrfoH9n0n4Ph9Ma\nlvlVKbnAKmWcVsGWkI7Mec8HEYLdfGensky8Jpk6neY0xl1X7uHl/5AJPv+Hw4mV\naGj3GOaC/wv0L9vY4oAbYsE=\n-----END PRIVATE KEY-----\n",
+  "client_email": "pdfhub@pdfhub-438314.iam.gserviceaccount.com",
+  "client_id": "108366421234089415599",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/pdfhub%40pdfhub-438314.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
