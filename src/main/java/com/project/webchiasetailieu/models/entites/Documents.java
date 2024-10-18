@@ -29,6 +29,9 @@ public class Documents {
     @Column(name ="DocType", nullable = false,length = 50)
     private String docType;
 
+    @Column(name = "DocUrl")
+    private String docUrl;
+
     @Column(name="DocSize",nullable = false)
     private int docSize;
 
