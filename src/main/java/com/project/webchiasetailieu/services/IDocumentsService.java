@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.List;
 
 public interface IDocumentsService {
-    Documents uploadDocument(MultipartFile file, String docName, String docType, String description, int docCategoryId, boolean isPaid, int point, int accountId) throws IOException;
+    Documents uploadDocument(MultipartFile file, String docName, String docType, String docUrl,String description, int docCategoryId, int point, int accountId) throws IOException;
     List<Documents> getAllDocuments();
     Documents getDocumentById(int id);
     Documents updateDocument(int id, DocumentDTO documentDTO);

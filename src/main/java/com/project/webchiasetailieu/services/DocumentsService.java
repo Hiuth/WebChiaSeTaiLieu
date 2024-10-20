@@ -28,7 +28,7 @@ public class DocumentsService implements IDocumentsService {
     private AccountReposi accountReposi;
 
     @Override
-    public Documents uploadDocument(MultipartFile file, String docName, String docType, String description, int docCategoryId, boolean isPaid, int point, int accountId) throws IOException {
+    public Documents uploadDocument(MultipartFile file, String docName, String docType, String docUrl ,String description, int docCategoryId, int point, int accountId) throws IOException {
         DocCategory docCategory = docCategoryReposi.findById(docCategoryId)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid category ID"));
         Account account = accountReposi.findById(accountId)
@@ -37,10 +37,11 @@ public class DocumentsService implements IDocumentsService {
         Documents document = Documents.builder()
                 .docName(docName)
                 .docType(docType)
-                .docBinary(file.getBytes())
+                //.docBinary(file.getBytes())
+                .docUrl(docUrl)
                 .description(description)
                 .docCategoryId(docCategory)
-                .isPaid(isPaid)
+                //.isPaid(isPaid)
                 .point(point)
                 .accountId(account)
                 .createDay(LocalDateTime.now())
@@ -75,7 +76,7 @@ public class DocumentsService implements IDocumentsService {
         document.setDocType(documentDTO.getDocumentType());
         document.setDescription(documentDTO.getDescription());
         document.setDocCategoryId(docCategory);
-        document.setPaid(documentDTO.isPaid());
+        //document.setPaid(documentDTO.isPaid());
         document.setPoint(documentDTO.getPoint());
         document.setAccountId(account);
         document.setDocAvatar(documentDTO.getDocAvatar());

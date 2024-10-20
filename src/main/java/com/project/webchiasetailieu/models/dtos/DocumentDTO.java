@@ -14,8 +14,8 @@ public class DocumentDTO {
     private int documentId;
     private String documentName;
     private String documentType;
-    private int documentSize;
-    private byte docBinary;
+//    private int documentSize;
+//    private byte docBinary;
     private String docUrl;
     private String description;
     private int docCategoryId;

@@ -46,13 +46,14 @@ public class DocumentsController {
             @RequestParam("file") MultipartFile file,
             @RequestParam("docName") String docName,
             @RequestParam("docType") String docType,
+            @RequestParam("docUrl") String docUrl,
             @RequestParam("description") String description,
             @RequestParam("docCategoryId") int docCategoryId,
-            @RequestParam("isPaid") boolean isPaid,
+           // @RequestParam("isPaid") boolean isPaid,
             @RequestParam("point") int point,
             @RequestParam("accountId") int accountId) throws IOException {
         try {
-            Documents document = documentService.uploadDocument(file, docName, docType, description, docCategoryId, isPaid, point, accountId);
+            Documents document = documentService.uploadDocument(file, docName, docType,docUrl, description, docCategoryId, point, accountId);
             return ResponseEntity.ok(document);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());

@@ -32,17 +32,17 @@ public class Documents {
     @Column(name = "DocUrl")
     private String docUrl;
 
-    @Column(name="DocSize",nullable = false)
-    private int docSize;
-
-    @Column(name ="DocBinary", nullable = false, columnDefinition = "LONGBLOB")
-    private byte[] docBinary;
+//    @Column(name="DocSize",nullable = false)
+//    private int docSize;
+//
+//    @Column(name ="DocBinary", nullable = false, columnDefinition = "LONGBLOB")
+//    private byte[] docBinary;
 
     @Column(name ="Description", nullable = false, columnDefinition = "TEXT")
     private String description;
 
-    @Column(name="IsPaid", nullable = false)
-    private boolean isPaid;
+//    @Column(name="IsPaid", nullable = false)
+//    private boolean isPaid;
 
     @Column(name="Point", nullable = false)
     private int point;
