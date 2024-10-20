@@ -4,7 +4,7 @@ import com.project.webchiasetailieu.models.dtos.AccountDTO;
 import com.project.webchiasetailieu.models.entites.Account;
 import com.project.webchiasetailieu.repositories.AccountReposi;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -18,8 +18,8 @@ public class AccountService implements IAccountService {
     @Autowired
     private AccountReposi accountReposi;
 
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+//    @Autowired
+//    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public enum BanType {
         TEMPORARY_10_DAYS,
@@ -47,7 +47,8 @@ public class AccountService implements IAccountService {
         Account account = Account.builder()
                 .name(accountDTO.getName())
                 .email(accountDTO.getEmail())
-                .password(bCryptPasswordEncoder.encode(accountDTO.getPassword())) // Encode password
+               // .password(bCryptPasswordEncoder.encode(accountDTO.getPassword())) // Encode password
+                .password(accountDTO.getPassword())
                 .access(accountDTO.getAccess())
                 .walletPoint(accountDTO.getWalletPoint())
                 .isBanned(accountDTO.isBanned())
@@ -72,7 +73,8 @@ public class AccountService implements IAccountService {
         Optional<Account> accountOptional = accountReposi.findById(id);
         if (accountOptional.isPresent()) {
             Account account = accountOptional.get();
-            account.setPassword(bCryptPasswordEncoder.encode(newPassword)); // Encode password
+            //account.setPassword(bCryptPasswordEncoder.encode(newPassword)); // Encode password
+            account.setPassword(newPassword);
             return accountReposi.save(account);
         } else {
             throw new IllegalArgumentException("Account not found");
