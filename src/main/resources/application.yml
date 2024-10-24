@@ -8,8 +8,11 @@ spring:
   datasource:
     url: "jdbc:mysql://localhost:3306/webchiasetailieu"
     username: root
-    password: 251204
-
+    password: vuhoangquan2004
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
   jpa:
     show-sql: true
     hibernate:

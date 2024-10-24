@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th ="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -137,12 +137,12 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Quân ấm dâu</td>
-                  <td>Quân-onichan@gmail.com</td>
+                <tr th:each="account: ${account}">
+                  <td th:text="${account.account_id}"></td>
+                  <td th:text="${account.name}"></td>
+                  <td th:text="${account.email}"></td>
                   <td class="password-cell">
-                    <span class="password-text">31331</span>
+                    <span class="password-text" th:text="${accounts.password}"></span>
                   </td>
                   <td>Active</td>
                   <td>
