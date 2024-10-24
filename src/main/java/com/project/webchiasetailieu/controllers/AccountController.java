@@ -11,14 +11,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.MailException;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
 import java.util.Map;
 
-@RestController
-@RequestMapping("/api/accounts")
+@Controller
+//@RestController
+@RequestMapping("/api/accounts/")
 public class AccountController {
 
     @Autowired
@@ -73,10 +76,11 @@ public class AccountController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> findAccountById(@PathVariable Integer id) {
+    public ResponseEntity<?> findAccountById(@PathVariable Integer id, Model model) {
         try {
             List<Account> accounts = accountService.findAccountById(id);
             if (!accounts.isEmpty()) {
+                model.addAttribute("Personal_account", accounts.get(0));
                 return ResponseEntity.ok(accounts.get(0));
             } else {
                 return ResponseEntity.status(404).body("Account not found");
@@ -86,9 +90,16 @@ public class AccountController {
         }
     }
 
-    @GetMapping("")
-    public List<Account> findAllAccounts() {
-        return accountService.findAllAccounts();
+    @GetMapping("/all")
+    public String findAllAccounts(Model model) {
+        // Lấy danh sách tài khoản từ service
+        List<Account> accounts = accountService.findAllAccounts();
+
+        // Đưa danh sách tài khoản vào model để truyền sang view
+        model.addAttribute("accounts", accounts);
+
+        // Trả về tên của trang Thymeleaf
+        return "Admin/quanlytaikhoan";
     }
 
     @PutMapping("/{id}/update-password")

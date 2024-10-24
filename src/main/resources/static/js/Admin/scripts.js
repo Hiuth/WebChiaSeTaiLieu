@@ -8,15 +8,27 @@ function toggleLockStatus(id) {
   if (button.classList.contains("locked")) {
     button.classList.remove("locked");
     button.classList.add("unlocked");
-    img.src = "/WebChiaSeTaiLieu/src/main/resources/static/images/lock-open-alt-solid-24.png"; // Thay đổi biểu tượng thành mở khóa
+    img.src = "/images/lock-open-alt-solid-24.png"; // Thay đổi biểu tượng thành mở khóa
   } else {
     button.classList.remove("unlocked");
     button.classList.add("locked");
-    img.src = "/WebChiaSeTaiLieu/src/main/resources/static/images/lock-alt-solid-24.png"; // Thay đổi biểu tượng thành khóa
+    img.src = "/images/lock-alt-solid-24.png"; // Thay đổi biểu tượng thành khóa
   }
 }
 
 // Hàm mở modal chỉnh sửa thông tin khách hàng
+function handleButtonClick(button) {
+  const accountId = button.getAttribute('data-account-id');
+  const accountName = button.getAttribute('data-account-name');
+  const accountEmail = button.getAttribute('data-account-email');
+  const accountPassword = button.getAttribute('data-account-password');
+  console.log("ID: ", accountId);
+  console.log("Name: ", accountName);
+  console.log("Email: ", accountEmail);
+  console.log("Password: ", accountPassword);
+  openModal(accountId, accountName, accountEmail, accountPassword);
+}
+
 function openModal(id, name, email, password) {
   const modal = document.getElementById("editModal");
   document.getElementById("customerName").value = name;
